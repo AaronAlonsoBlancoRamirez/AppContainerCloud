@@ -1,0 +1,272 @@
+/* --- Variables de Color y Estilos Globales --- */
+:root {
+    --bg-color: #1a1a2e;
+    --surface-color: #16213e;
+    --primary-color: #0f3460;
+    --accent-color: #e94560;
+    --text-color: #e0e0e0;
+    --muted-text-color: #a0a0a0;
+    --border-color: #2a3b5e;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    
+    --status-planned: #5bc0de;
+    --status-in-progress: #f0ad4e;
+    --status-done: #5cb85c;
+
+    --font-family: 'Poppins', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Animación de Entrada --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Contenedor Principal y Tarjetas --- */
+.container {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 20px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+header .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--accent-color);
+}
+
+.muted {
+    color: var(--muted-text-color);
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.muted code {
+    background-color: var(--primary-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    font-weight: 500;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+/* --- Estilos del Formulario --- */
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.3);
+}
+
+/* --- Estilos de Botones --- */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: var(--font-family);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #d43d51;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+/* --- Estilos de la Tabla --- */
+.table-container {
+    overflow-x: auto; /* Para responsividad en tablas */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+thead th {
+    background-color: var(--primary-color);
+    font-weight: 600;
+    color: #fff;
+}
+
+tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: var(--primary-color);
+}
+
+/* --- Badges de Status --- */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.status-planned { background-color: var(--status-planned); }
+.status-in_progress { background-color: var(--status-in-progress); }
+.status-done { background-color: var(--status-done); }
+
+/* --- Botones de Acción con Iconos --- */
+.row-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.action-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.action-btn.edit { fill: var(--status-in-progress); }
+.action-btn.edit:hover { background-color: rgba(240, 173, 78, 0.1); }
+.action-btn.delete { fill: var(--accent-color); }
+.action-btn.delete:hover { background-color: rgba(233, 69, 96, 0.1); }
+
+
+/* --- Diseño Responsivo --- */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    form {
+        grid-template-columns: 1fr; /* Cambia a una columna en móviles */
+    }
+    
+    .actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

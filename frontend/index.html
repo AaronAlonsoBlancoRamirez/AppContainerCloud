@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gestión de Módulos - Cloud Computing</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>Gestión de Módulos del Curso</h1>
+            <p class="subtitle">Cloud Computing</p>
+            <p class="muted">Frontend servido por Nginx (contenedor). API en <code>http://localhost:8080</code>.</p>
+        </header>
+
+        <section class="card">
+            <h2>Listado de Módulos</h2>
+            <div class="table-container">
+                <table id="tbl">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Semana</th>
+                            <th>Status</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 id="formTitle">Crear Nuevo Módulo</h2>
+            <form id="modForm">
+                <input type="hidden" id="id" />
+                
+                <div class="form-group">
+                    <label for="title">Título</label>
+                    <input id="title" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="week">Semana</label>
+                    <input id="week" type="number" min="1" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status">
+                        <option value="planned">Planned</option>
+                        <option value="in_progress">In Progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="description">Descripción</label>
+                    <textarea id="description" rows="4"></textarea>
+                </div>
+                
+                <div class="actions full-width">
+                    <button type="submit" id="saveBtn" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" id="resetBtn" class="btn btn-secondary">Limpiar Formulario</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script defer src="script.js"></script>
+</body>
+</html>
