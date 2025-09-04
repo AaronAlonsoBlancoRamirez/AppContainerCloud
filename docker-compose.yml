@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appdb
+    ports:
+      - "3307:3306"   # <- host 3307 → contenedor 3306
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -proot --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - db_data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: appdb
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
